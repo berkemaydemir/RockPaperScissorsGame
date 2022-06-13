@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<title>ROCK, PAPER, SCISSORS GAME</title>
+<meta charset="utf-8">
+<style>
+body{
+background: #e74c3c;
+}
+#liste img{
+padding:5px;
+border:1px #232333 solid;
+ 
+}
+#result{
+float:left;
+width: 260px;
+height: 260px;
+font-size:2em;
+padding:20px;
+background: #f1c40f;
+ 
+}
+#pc-result{
+float:left;
+ 
+}
+#dpu{
+float:left;
+ 
+}
+ 
+</style>
+</head>
+<body>
+ 
+<div id="liste">
+<img src="paper.png" id="paper" width="300" height="300" data-id="0">
+<img src="scissors.png" id="scissors" width="300" height="300" data-id="1">
+<img src="rock.png" id="rock" width="300" height="300" data-id="2">
+</div> 
+<div id="pc-result">
+<img src="" id="pc-choose" width="300" height="300" alt="pc choose">
+</div>
+<div id="result">
+ 
+</div>
+<div id="dpu">
+<img src="dpu.png" id="pc-choose" width="300" height="300" alt="pc seçimi">
+</div>
+<script>
+var liste=["paper.png","scissors.png","rock.png"];
+var paper=document.getElementById("paper");
+var scissors=document.getElementById("scissors");
+var rock=document.getElementById("rock");
+var pcchoose=document.getElementById("pc-choose");
+var printResult=document.getElementById("result");
+ 
+ 
+paper.onclick=makechoose;
+scissors.onclick=makechoose;
+rock.onclick=makechoose;
+ 
+ 
+function makechoose(){
+var pc= RandomPaper();
+ 
+
+var choose= this.dataset.id;
+if(pc==0 && choose==0)
+{
+result="DRAW, you made the SAME choice";
+}
+else if(pc==0 && choose==1)
+{
+result="You WIN, Scissors cuts Paper";
+}
+else if(pc==0 && choose==2)
+{
+result="You LOSE, Paper covers Stone";
+}
+else if(pc==1 && choose==0)
+{
+result="You LOSE, Scissors cuts Paper";
+}
+else if(pc==1 && choose==1)
+{
+result="DRAW, You made the SAME choice";
+}
+else if(pc==1 && choose==2)
+{
+result="You WIN, Rock crushes Scissors";
+}
+else if(pc==2 && choose==0)
+{
+result="You WIN, Paper covers Stone";
+}
+else if(pc==2 && choose==1)
+{
+result="You LOSE, Rock crushes Scissors";
+}
+else if(pc==2 && choose==2)
+{
+result="DRAW, you made the SAME choice";
+}
+ 
+printResult.innerHTML=result;
+}
+ 
+function RandomPaper(){
+var number= Math.round(Math.random()*2);
+pcchoose.src=liste[number]; 
+ 
+return number;
+}
+ 
+</script>
+</body>
+</html>
